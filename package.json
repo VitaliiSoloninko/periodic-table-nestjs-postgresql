@@ -1,5 +1,5 @@
 {
-  "name": "periodic-table-backend-nestjs-postgresql",
+  "name": "periodic-table-nestjs-postgresql",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -82,6 +82,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapping": {
+      "^src/(.*)$": "<rootDir>/$1"
+    }
   }
 }

@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  app:
+    container_name: periodic-table-nestjs
+    build:
+      context: .
+    env_file:
+      - .production.env
+    ports:
+      - '5002:5002'
+    command: node dist/main.js
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    container_name: periodic-table-postgres
+    image: postgres:17
+    env_file:
+      - .production.env
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+    ports:
+      - '5434:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
